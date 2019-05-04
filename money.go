@@ -7,6 +7,16 @@ type Money struct {
 	Currency *Currency
 }
 
+func (m *Money) GetFloat() float64 {
+	return float64(m.Amount) / float64(10^m.Currency.Fraction)
+}
+
+func New(a uint64, c string) Money {
+
+	currency := currencies[c]
+	return Money{Amount: a, Currency: currency}
+}
+
 func NewFromFloat(a float64, c string) Money {
 
 	currency := currencies[c]
